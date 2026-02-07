@@ -10,11 +10,11 @@ LinkedList<T>::~LinkedList() {
 template <typename T>
 void LinkedList<T>::append(const T& elem) {
     // TODO
-    Node<T>* ptr = head;
-    while ptr->next != nullptr{
+    Node* ptr = head;
+    while(ptr->next != nullptr){
         ptr = ptr->next;
     }
-    ptr->next = new Node(elem)
+    ptr->next = new Node(elem);
     this->length++;
     
 }
@@ -72,6 +72,8 @@ void LinkedList<T>::replace(int position, const T& elem) {
             i++;
         }
     }
+    ptr->value = elem;
+    head = ptr;
 }
 
 template <typename T>
