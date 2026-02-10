@@ -41,15 +41,16 @@ void LinkedList<T>::clear() {
 template <typename T>
 T LinkedList<T>::getElement(int position) const {
     Node* ptr = this->head;
-    int i = 0;
     while(ptr != nullptr){
-        if(i==position){
+        if(position > 0){
+            ptr = ptr->next;
+            position--;
+        }
+        else{
             return ptr->value;
         }
-        ptr = ptr->next;
-        i++;
     }
-    return -1;
+    throw out_of_range("Position is out of range");
 }
 
 template <typename T>
@@ -65,20 +66,18 @@ bool LinkedList<T>::isEmpty() const {
 template <typename T>
 void LinkedList<T>::replace(int position, const T& elem) {
     // TODO
-    Node* ptr = head;
-    int i = 0;
+    Node* ptr = this->head;
     while(ptr != nullptr){
-        if(i==position){
-            ptr->value = elem;
-            break;
+        if(position > 0){
+            ptr = ptr->next;
+            position--;
         }
         else{
-            ptr = ptr->next;
-            i++;
+            ptr->value = elem;
+            return;
         }
     }
-    ptr->value = elem;
-    head = ptr;
+    throw out_of_range("Position is out of range");
 }
 
 template <typename T>

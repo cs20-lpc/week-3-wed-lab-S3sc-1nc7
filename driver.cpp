@@ -14,6 +14,7 @@ int main(){
       cout << *new_linked_list;
 
     delete new_linked_list;
+    new_linked_list = nullptr;
 
     LinkedList<string>* stringlist = new LinkedList<string>();
     
@@ -21,12 +22,23 @@ int main(){
     stringlist->append("hello");
     stringlist->append("world");
       cout << *stringlist;
-    stringlist->replace(2,"kingdom");
-      cout << *stringlist;    
-    stringlist->clear();
-      cout << *stringlist;
 
-    delete stringlist;
+      // test replace func
+    try{
+        stringlist->replace(2,"kingdom");
+        cout << *stringlist;    
+    }
+    catch (exception & e) { cout << e.what() << endl;}
+        // test getElement func
+    try{
+        string sam = stringlist->getElement(1);
+        cout << "SecondElement is: "<< sam << endl;
+    }
+    catch (exception & e){ cout << e.what() << endl;}
+
+    delete stringlist;  // destructor calls clear()
+
+    stringlist = nullptr;
     
     return 0;
 }
