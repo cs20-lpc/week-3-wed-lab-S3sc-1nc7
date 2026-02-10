@@ -10,7 +10,12 @@ LinkedList<T>::~LinkedList() {
 template <typename T>
 void LinkedList<T>::append(const T& elem) {
     // TODO
-    Node* ptr = head;
+    Node* ptr = this->head;
+    if(!ptr){
+        this->head = new Node(elem);
+        this->length++;
+        return;
+    }
     while(ptr->next != nullptr){
         ptr = ptr->next;
     }
@@ -21,9 +26,9 @@ void LinkedList<T>::append(const T& elem) {
 
 template <typename T>
 void LinkedList<T>::clear() {
-    Node<T>* ptr = head;
+    Node* ptr = this->head;
     while(ptr != nullptr){
-        Node<T>* nextptr = ptr->next;
+        Node* nextptr = ptr->next;
         delete ptr;
         ptr = nextptr;
     }
@@ -35,7 +40,7 @@ void LinkedList<T>::clear() {
 
 template <typename T>
 T LinkedList<T>::getElement(int position) const {
-    Node<T>* ptr = head;
+    Node* ptr = this->head;
     int i = 0;
     while(ptr != nullptr){
         if(i==position){
@@ -44,7 +49,7 @@ T LinkedList<T>::getElement(int position) const {
         ptr = ptr->next;
         i++;
     }
-    return nullptr;
+    return -1;
 }
 
 template <typename T>
@@ -60,7 +65,7 @@ bool LinkedList<T>::isEmpty() const {
 template <typename T>
 void LinkedList<T>::replace(int position, const T& elem) {
     // TODO
-    Node<T>* ptr = head;
+    Node* ptr = head;
     int i = 0;
     while(ptr != nullptr){
         if(i==position){
