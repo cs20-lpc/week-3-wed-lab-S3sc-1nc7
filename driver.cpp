@@ -5,18 +5,28 @@ int main(){
     LinkedList<int>* new_linked_list = new LinkedList<int>();
     
     new_linked_list->append(67);
-
     new_linked_list->append(32);
-
     new_linked_list->append(12);
-    cout << *new_linked_list;
-
+      cout << *new_linked_list;
     new_linked_list->replace(0,69);
-    cout << *new_linked_list;    
-
+      cout << *new_linked_list;    
     new_linked_list->clear();
-    cout << *new_linked_list;
+      cout << *new_linked_list;
 
     delete new_linked_list;
+
+    LinkedList<string>* stringlist = new LinkedList<string>();
+    
+    stringlist->append("67");
+    stringlist->append("hello");
+    stringlist->append("world");
+      cout << *stringlist;
+    stringlist->replace(2,"kingdom");
+      cout << *stringlist;    
+    stringlist->clear();
+      cout << *stringlist;
+
+    delete stringlist;
+    
     return 0;
 }
